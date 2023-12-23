@@ -15,3 +15,6 @@ target_link_libraries(main_1 ${Boost_LIBRARIES} ${OpenCV_LIBS})
 
 add_executable (main_2 src/main_2.cpp )
 target_link_libraries(main_2 ${Boost_LIBRARIES} ${OpenCV_LIBS})
+
+add_executable (main_3 src/main_3.cpp )
+target_link_libraries(main_3 ${Boost_LIBRARIES} ${OpenCV_LIBS})

@@ -24,16 +24,20 @@ int main()
     // Map the shared memory to a region
     bip::mapped_region region(sharedMemory, bip::read_write);
 
-    cv::Mat receivedFrame;
+    // Create semaphore for synchronization
+    bip::named_semaphore semaphore(bip::open_only_t(), "video_semaphore");
 
+    cv::Mat receivedFrame;
+    cv::Mat gray;
     // Loop to continuously receive frames from the child process
     while (true)
     {
         // Deserialize the frame from shared memory
         std::vector<uchar> receivedData(static_cast<uchar *>(region.get_address()), static_cast<uchar *>(region.get_address()) + frameSize);
         receivedFrame = cv::imdecode(receivedData, cv::IMREAD_UNCHANGED);
+        cv::cvtColor(receivedFrame, gray, cv::COLOR_RGB2GRAY);
         // Display the received frame (you might want to modify this based on your needs)
-        cv::imshow("Received Frame", receivedFrame);
+        cv::imshow("Gray", gray);
         cv::waitKey(1);
     }
 }
