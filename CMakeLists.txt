@@ -11,10 +11,10 @@ find_package(OpenCV 4.6.0 REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 
 add_executable (main_1 src/main_1.cpp )
-target_link_libraries(main_1 ${Boost_LIBRARIES} ${OpenCV_LIBS})
+target_link_libraries(main_1 ${Boost_LIBRARIES} ${OpenCV_LIBS} rt pthread)
 
 add_executable (main_2 src/main_2.cpp )
-target_link_libraries(main_2 ${Boost_LIBRARIES} ${OpenCV_LIBS})
+target_link_libraries(main_2 ${Boost_LIBRARIES} ${OpenCV_LIBS} rt pthread)
 
 add_executable (main_3 src/main_3.cpp )
-target_link_libraries(main_3 ${Boost_LIBRARIES} ${OpenCV_LIBS})
+target_link_libraries(main_3 ${Boost_LIBRARIES} ${OpenCV_LIBS} rt pthread)
